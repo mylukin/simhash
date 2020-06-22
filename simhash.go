@@ -45,7 +45,11 @@ func (w *WordFeatureSet) GetFeatures() []gdSimhash.Feature {
 
 func Compare(a uint64, b uint64) float64 {
 	x := gdSimhash.Compare(a, b)
-	y := - (1 / 2) * math.Pow(float64(x)/3, 2)
+	return gaussianDensity(float64(x)) / gaussianDensity(0)
+}
+
+func gaussianDensity(x float64) float64 {
+	y := - (1 / 2) * math.Pow(x/3, 2)
 	y = math.Exp(y)
 	y = (1 / math.Sqrt(2*math.Pi)) * y
 	return y
