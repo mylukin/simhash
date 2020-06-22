@@ -2,6 +2,7 @@ package simhash
 
 import (
 	gdSimhash "github.com/go-dedup/simhash"
+	"math"
 	"regexp"
 )
 
@@ -40,4 +41,12 @@ func (w *WordFeatureSet) GetFeatures() []gdSimhash.Feature {
 		features = append(features, feature)
 	}
 	return features
+}
+
+func Compare(a uint64, b uint64) float64 {
+	x := gdSimhash.Compare(a, b)
+	y := - (1 / 2) * math.Pow(float64(x)/3, 2)
+	y = math.Exp(y)
+	y = (1 / math.Sqrt(2*math.Pi)) * y
+	return y
 }
