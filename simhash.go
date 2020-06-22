@@ -34,10 +34,10 @@ func (w *WordFeatureSet) GetFeatures() []gdSimhash.Feature {
 			features = append(features, feature)
 		}
 	}
-	//bWords := boundaries.FindAll(w.B, -1)
-	//for _, w := range bWords {
-	//	feature := gdSimhash.NewFeature(w)
-	//	features = append(features, feature)
-	//}
+	bWords := boundaries.FindAll(w.B, -1)
+	for _, w := range bWords {
+		feature := gdSimhash.NewFeature(w)
+		features = append(features, feature)
+	}
 	return features
 }
