@@ -49,7 +49,7 @@ func Compare(a uint64, b uint64) float64 {
 }
 
 func gaussianDensity(x float64) float64 {
-	y := - (1 / 2) * math.Pow(x/3, 2)
+	y := -(float64(1) / float64(2)) * math.Pow(x/3, 2)
 	y = math.Exp(y)
 	y = (1 / math.Sqrt(2*math.Pi)) * y
 	return y
