@@ -27,17 +27,17 @@ var boundaries = regexp.MustCompile(`[\w']+(?:\://[\w\./]+){0,1}`)
 
 func (w *WordFeatureSet) GetFeatures() []gdSimhash.Feature {
 	var features []gdSimhash.Feature
-	//words := string(w.B)
-	//for _, w := range words {
-	//	if len(string(w)) > 1 {
-	//		feature := gdSimhash.NewFeature([]byte(string(w)))
-	//		features = append(features, feature)
-	//	}
-	//}
-	bWords := boundaries.FindAll(w.B, -1)
-	for _, w := range bWords {
-		feature := gdSimhash.NewFeature(w)
-		features = append(features, feature)
+	words := string(w.B)
+	for _, w := range words {
+		if len(string(w)) > 1 {
+			feature := gdSimhash.NewFeature([]byte(string(w)))
+			features = append(features, feature)
+		}
 	}
+	//bWords := boundaries.FindAll(w.B, -1)
+	//for _, w := range bWords {
+	//	feature := gdSimhash.NewFeature(w)
+	//	features = append(features, feature)
+	//}
 	return features
 }
